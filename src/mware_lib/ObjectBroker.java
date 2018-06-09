@@ -1,7 +1,5 @@
 package mware_lib;
 
-import nameservice.NameService;
-
 import java.util.logging.Logger;
 
 /**

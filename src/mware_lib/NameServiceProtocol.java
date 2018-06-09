@@ -1,4 +1,4 @@
-package nameservice;
+package mware_lib;
 
 public class NameServiceProtocol {
 

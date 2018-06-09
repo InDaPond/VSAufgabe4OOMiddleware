@@ -2,10 +2,8 @@ package test;
 
 import math_ops._CalculatorImplBase;
 import mware_lib.ObjectBroker;
-import nameservice.NameService;
-import org.junit.jupiter.api.BeforeAll;
+import mware_lib.NameService;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

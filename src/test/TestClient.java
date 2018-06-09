@@ -2,7 +2,7 @@ package test;
 
 import math_ops._CalculatorImplBase;
 import mware_lib.ObjectBroker;
-import nameservice.NameService;
+import mware_lib.NameService;
 
 public class TestClient {
     private String host;
