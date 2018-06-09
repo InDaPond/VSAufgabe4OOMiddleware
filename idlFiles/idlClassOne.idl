@@ -1,0 +1,10 @@
+module complexSyntax {
+  class ClassOne {
+      double add(double a, double b);
+      string getStr(double a);
+  };
+  class ClassTwo {
+      string stringMethod1(string s1, string s2, int i, double d);
+      string stringMethod2(double d);
+  };
+};
