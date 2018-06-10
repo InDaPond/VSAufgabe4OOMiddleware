@@ -19,48 +19,39 @@ public class NameServiceProtocol {
     }
 
 
-    public static String getRequestType(String request) {
-        switch (request.split(",")[0]) {
-            case REBIND:
-                return REBIND;
-            case RESOLVE:
-                return RESOLVE;
-            default:
-                return UNKNOWN;
-        }
+    public static String getType(String message) {
+        return message.split(";")[0];
     }
 
-    public static String getRequestObjectName(String request) {
-        return request.split(",")[1];
+    public static String getObjectName(String message) {
+        return message.split(",")[1];
     }
 
-    public static String getRequestHost(String request) {
-        return request.split(",")[2];
+    public static String getHost(String message) {
+        return message.split(",")[2];
     }
 
-    public static String getRequestPort(String request) {
-        return request.split(",")[3];
+    public static String getPort(String message) {
+        return message.split(",")[3];
     }
 
-    public static String createResolveResponse(String objectName, String locationHost, String locationPort){
-            return String.format("%s,%s,%s,%s",SUCCESS,objectName,locationHost,locationPort);
+    public static String createResolveResponse(String objectName, String locationHost, String locationPort) {
+        return String.format("%s,%s,%s,%s", SUCCESS, objectName, locationHost, locationPort);
     }
 
-    public static String extractObjectHost(String[] response){
+    public static String extractObjectHost(String[] response) {
         return response[0];
     }
 
-    public static String extractObjectPort(String[] response){
+    public static String extractObjectPort(String[] response) {
         return response[1];
     }
 
-    public static String resolveFailed(){
+    public static String resolveFailed() {
         return FAILURE;
     }
 
-    public static String createUnknownProtocol(){
-        return String.format("%s,%s,%s,%s",UNKNOWN,"","","");
+    public static String createUnknownProtocol() {
+        return String.format("%s,%s,%s,%s", UNKNOWN, "", "", "");
     }
-
-
 }

@@ -13,16 +13,18 @@ public class ObjectBroker {
     private NameService nameservice;
     private static final Logger logger = Logger.getLogger(ObjectBroker.class.getName());
     private static ObjectBroker instance = null;
+    private static final int applicationPort = 9999;
+    private static final String logFileLocation = "../logs";
 
     private ObjectBroker(String serviceHost, int listenPort, boolean debug) {
         if (debug) {
-            logger.info(String.format("ObjectBroker instantiated with \n servicehost: %s, listenPort: %d, debug: %s",
+            logger.info(String.format("ObjectBroker instantiated with \t servicehost: %s, listenPort: %d, debug: %s",
                     serviceHost, listenPort, debug));
         }
         this.serviceHost = serviceHost;
         this.listenPort = listenPort;
         this.debug = debug;
-        this.nameservice = NameServiceProxy.getInstance(serviceHost, listenPort);
+        this.nameservice = NameServiceProxy.getInstance(serviceHost, listenPort, applicationPort, debug);
     }
 
 

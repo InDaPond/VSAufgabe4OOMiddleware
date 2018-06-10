@@ -28,7 +28,7 @@ public class RequestHandler implements Runnable {
         ) {
             String request = in.readLine();
             String reply = processRequest(request);
-            if(NameServiceProtocol.getRequestType(request).equals(NameServiceProtocol.RESOLVE)){
+            if(NameServiceProtocol.getType(request).equals(NameServiceProtocol.RESOLVE)){
                 out.write(reply);
             }
 
@@ -40,7 +40,7 @@ public class RequestHandler implements Runnable {
     }
 
     private String processRequest(String request){
-        switch(NameServiceProtocol.getRequestType(request)){
+        switch(NameServiceProtocol.getType(request)){
             case NameServiceProtocol.UNKNOWN: return NameServiceProtocol.createUnknownProtocol();
             case NameServiceProtocol.REBIND: return rebind(request);
             case NameServiceProtocol.RESOLVE: return resolve(request);
@@ -50,7 +50,7 @@ public class RequestHandler implements Runnable {
     }
 
     private String resolve(String request) {
-        String objName = NameServiceProtocol.getRequestObjectName(request);
+        String objName = NameServiceProtocol.getObjectName(request);
         String[] itemLocation = this.nameService.registry.get(objName);
         if(itemLocation==null){
             return NameServiceProtocol.resolveFailed();
@@ -62,9 +62,9 @@ public class RequestHandler implements Runnable {
 
     private String rebind(String request) {
         String[] newItem = new String[2];
-        newItem[0] = NameServiceProtocol.getRequestHost(request);
-        newItem[1] = NameServiceProtocol.getRequestPort(request);
-        this.nameService.registry.put(NameServiceProtocol.getRequestObjectName(request),newItem);
+        newItem[0] = NameServiceProtocol.getHost(request);
+        newItem[1] = NameServiceProtocol.getPort(request);
+        this.nameService.registry.put(NameServiceProtocol.getObjectName(request),newItem);
         return null;
     }
 }
