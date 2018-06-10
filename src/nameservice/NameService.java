@@ -5,9 +5,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.logging.Logger;
 
 public class NameService implements Runnable {
 
@@ -15,6 +18,8 @@ public class NameService implements Runnable {
     private static NameService instance = null;
     private static boolean running = true;
     private static int port;
+    private static final Logger logger = Logger.getLogger(NameService.class.getName());
+    private static final boolean debug = true;
 
     private NameService() {
         this.registry = new ConcurrentHashMap<>();
@@ -43,11 +48,20 @@ public class NameService implements Runnable {
 
     @Override
     public void run() {
+        if(debug) {
+            try {
+                logger.info(String.format("Nameservice up and running at %s:%s",InetAddress.getLocalHost()
+                                .getHostAddress(),port));
+            } catch (UnknownHostException e) {
+                e.printStackTrace();
+            }
+        }
         try (
                 ServerSocket serverSocket = new ServerSocket(port)
         ) {
             while (running) {
                 Socket clientSocket = serverSocket.accept();
+                logger.info("Received new connection, delegating...");
                 //delegate to a Thread so the NameService can keep listening to client requests
                 new Thread(new RequestHandler(clientSocket)).start();
             }

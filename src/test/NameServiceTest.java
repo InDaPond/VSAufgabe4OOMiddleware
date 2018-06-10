@@ -5,6 +5,7 @@ import mware_lib.NameServiceProxy;
 import mware_lib.ObjectBroker;
 import mware_lib.NameService;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

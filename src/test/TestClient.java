@@ -16,7 +16,9 @@ public class TestClient {
     public _CalculatorImplBase resolveCalculator(String name) {
         ObjectBroker objectBroker = ObjectBroker.init(host,port,true);
         NameService nameService = objectBroker.getNameService();
+        System.out.println("~~~~");
         Object rawObjRef = nameService.resolve(name);
+        System.out.println("####");
         _CalculatorImplBase remoteObj = _CalculatorImplBase.narrowCast(rawObjRef);
         return remoteObj;
     }

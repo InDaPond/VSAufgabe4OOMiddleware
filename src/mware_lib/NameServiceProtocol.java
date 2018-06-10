@@ -16,7 +16,7 @@ public class NameServiceProtocol {
 
 
     public static String getType(String message) {
-        return message.split(";")[0];
+        return message.split(",")[0];
     }
 
     public static String getObjectName(String message) {

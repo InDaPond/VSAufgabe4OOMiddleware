@@ -1,5 +1,7 @@
 package mware_lib;
 
+import com.sun.jdi.ObjectReference;
+
 import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
@@ -42,14 +44,17 @@ public class NameServiceProxy extends NameService {
         if(debug) logger.info(String.format("rebind called\nObject %s put into local registry with the name %s",servant.getClass().getName(),name));
         this.registry.put(name, servant);
         // Verbindung aufbauen
-        if(debug)logger.info(String.format("Writing to %s:%s",serviceHost,listenPort));
+        if(debug) logger.info(String.format("Writing to %s:%s",serviceHost,listenPort));
         try (Socket mySock = new Socket(serviceHost, listenPort);
              PrintWriter out = new PrintWriter(mySock.getOutputStream(), true)
         ) {
             // Kommunikation
-            out.write((NameServiceProtocol.createRequest(NameServiceProtocol.RESOLVE, name, InetAddress.getLocalHost
-                    ().getHostAddress(), applicationPort)));
-            logger.info("Message sent. Closing Socket");
+//            out.write((NameServiceProtocol.createRequest(NameServiceProtocol.REBIND, name, InetAddress.getLocalHost
+//                    ().getHostAddress(), applicationPort)));
+            String request = (NameServiceProtocol.createRequest(NameServiceProtocol.REBIND, name, InetAddress.getLocalHost
+                    ().getHostAddress(),applicationPort));
+            out.write(request);
+            if(debug) logger.info("Message sent. Closing Socket");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -57,20 +62,24 @@ public class NameServiceProxy extends NameService {
 
     @Override
     public Object resolve(String name) {
-        if(debug)logger.info("resolve called for " + name);
+        if(debug) logger.info("resolve called for " + name);
         // Verbindung aufbauen
+        if(debug) logger.info(String.format("Writing to %s:%s",serviceHost,listenPort));
         try (Socket mySock = new Socket(serviceHost, listenPort);
              // I/O-Kanäle der Socket
              BufferedReader in = new BufferedReader(new InputStreamReader(mySock.getInputStream()));
              PrintWriter out = new PrintWriter(mySock.getOutputStream(), true)
         ) {
+            if(debug) logger.info("Connection established");
             // Kommunikation
-            out.write((NameServiceProtocol.createRequest(NameServiceProtocol.RESOLVE, name, InetAddress.getLocalHost
-                    ().getHostAddress(), applicationPort)));
-
+            String request = (NameServiceProtocol.createRequest(NameServiceProtocol.RESOLVE, name, InetAddress.getLocalHost
+                            ().getHostAddress(),applicationPort));
+            out.write(request);
+            if(debug) logger.info("Request sent: "+request);
             String reply = in.readLine();
+            if(debug) logger.info("Received reply: "+reply);
             if (NameServiceProtocol.getType(reply).equals(NameServiceProtocol.SUCCESS)) {
-                //Contact Server where actual Object is stored
+                return String.format("%s,%s,%s",NameServiceProtocol.getObjectName(reply),NameServiceProtocol.getHost(reply),NameServiceProtocol.getPort(reply));
             }
         } catch (IOException e) {
             e.printStackTrace();

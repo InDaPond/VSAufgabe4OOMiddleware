@@ -349,9 +349,14 @@ public class Parser {
 
                 }
 
+
                 //create narrowCast-Method
                 fileWriter.append("public static " + className + " narrowCast(Object rawObjectRef){\n" +
                         "return new " + className + "(){\n");
+                //reference variables
+                fileWriter.append("private String name = rawObjectRef.toString().split(\",\")[0];\n" +
+                        "private String host = rawObjectRef.toString().split(\",\")[1];\n" +
+                        "private int port = Integer.parseInt(rawObjectRef.toString().split(\",\")[2]);\n");
                 for (MethodData currentMethod : methods) {
                     fileWriter.append("@Override\n" +
                             "public " + IDLCompiler.getSupportedJavaDataTypeName(currentMethod
@@ -367,9 +372,11 @@ public class Parser {
                             fileWriter.append(", ");
                         }
                     }
-                    fileWriter.append("){\nreturn ("+IDLCompiler.getSupportedJavaDataTypeName(currentMethod.getReturnType())+") RemoteDelegator.invokeMethod(\""+className +"\",\""+currentMethod.getName()+
+                    fileWriter.append("){\nreturn (" + IDLCompiler.getSupportedJavaDataTypeName(currentMethod
+                            .getReturnType()) + ") RemoteDelegator.invokeMethod(name, host, port,"+"\"" + className + "\",\"" +
+                            currentMethod.getName() +
                             "\", ");
-                    for(int n=0; n<paramNames.length;n++){
+                    for (int n = 0; n < paramNames.length; n++) {
                         fileWriter.append(paramNames[n]);
                         if (paramNames.length > 1 && n < paramTypes.length - 1) {
                             fileWriter.append(", ");

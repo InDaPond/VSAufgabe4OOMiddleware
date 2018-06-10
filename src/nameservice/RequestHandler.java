@@ -5,12 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import java.util.logging.Logger;
 
 
 public class RequestHandler implements Runnable {
 
     private NameService nameService;
     private Socket clientSocket;
+    private static final Logger logger = Logger.getLogger(RequestHandler.class.getName());
+    private static final boolean debug = true;
 
 
     public RequestHandler(Socket clientSocket) {
@@ -26,13 +29,17 @@ public class RequestHandler implements Runnable {
                 BufferedReader in = new BufferedReader(
                         new InputStreamReader(clientSocket.getInputStream()));
         ) {
+            if(debug) logger.info("Waiting for incoming requests!");
             String request = in.readLine();
+            if(debug) logger.info("Request received: "+request);
             String reply = processRequest(request);
+            if(debug && reply!=null) logger.info("Reply: "+reply);
             if(NameServiceProtocol.getType(request).equals(NameServiceProtocol.RESOLVE)){
                 out.write(reply);
             }
 
             clientSocket.close();
+            if(debug) logger.info("Job done!");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -50,13 +57,17 @@ public class RequestHandler implements Runnable {
     }
 
     private String resolve(String request) {
+
         String objName = NameServiceProtocol.getObjectName(request);
+        if(debug)logger.info("Retrieving Object...");
         String[] itemLocation = this.nameService.registry.get(objName);
         if(itemLocation==null){
+            if(debug)logger.info("Failed to retrieve item :(");
             return NameServiceProtocol.resolveFailed();
         }
         String objHost = NameServiceProtocol.extractObjectHost(itemLocation);
         String objPort = NameServiceProtocol.extractObjectPort(itemLocation);
+        if(debug)logger.info("Item retrieved, Generatign response!");
         return NameServiceProtocol.createResolveResponse(objName,objHost,objPort);
     }
 
@@ -65,6 +76,7 @@ public class RequestHandler implements Runnable {
         newItem[0] = NameServiceProtocol.getHost(request);
         newItem[1] = NameServiceProtocol.getPort(request);
         this.nameService.registry.put(NameServiceProtocol.getObjectName(request),newItem);
+        if(debug) logger.info("rebind done!");
         return null;
     }
 }
