@@ -354,9 +354,9 @@ public class Parser {
                 fileWriter.append("public static " + className + " narrowCast(Object rawObjectRef){\n" +
                         "return new " + className + "(){\n");
                 //reference variables
-                fileWriter.append("private String name = rawObjectRef.toString().split(\",\")[0];\n" +
-                        "private String host = rawObjectRef.toString().split(\",\")[1];\n" +
-                        "private int port = Integer.parseInt(rawObjectRef.toString().split(\",\")[2]);\n");
+                fileWriter.append("public String name = rawObjectRef.toString().split(\",\")[0];\n" +
+                        "public String host = rawObjectRef.toString().split(\",\")[1];\n" +
+                        "public int port = Integer.parseInt(rawObjectRef.toString().split(\",\")[2]);\n");
                 for (MethodData currentMethod : methods) {
                     fileWriter.append("@Override\n" +
                             "public " + IDLCompiler.getSupportedJavaDataTypeName(currentMethod

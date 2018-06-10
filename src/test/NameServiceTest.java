@@ -39,13 +39,19 @@ public class NameServiceTest {
                 return Double.toString(a);
             }
         }
-
+        System.out.println(-1);
         ObjectBroker objBroker = ObjectBroker.init(host, port, true);
+        System.out.println(0);
         NameServiceProxy nameService = (NameServiceProxy) objBroker.getNameService();
+        System.out.println(1);
         nameService.rebind((Object) new Calculator(), "myCalculator");
+        System.out.println(2);
         Object result = nameService.resolveLocally("myCalculator");
+        System.out.println(3);
         Calculator myCalc = (Calculator) result;
+        System.out.println(4);
         assertEquals(5.0, myCalc.add(2, 3));
+        System.out.println("result: "+result.getClass());
     }
 
     @Test
@@ -55,5 +61,8 @@ public class NameServiceTest {
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
         System.out.println(calculator);
+        calculator.add(2,2);
+
+
     }
 }

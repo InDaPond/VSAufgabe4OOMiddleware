@@ -10,7 +10,8 @@ public class ObjectBroker {
     private String serviceHost;
     private int listenPort;
     private boolean debug;
-    private NameService nameservice;
+    private NameServiceProxy nameservice;
+    private ApplicationCommunicater applicationCommunicater;
     private static final Logger logger = Logger.getLogger(ObjectBroker.class.getName());
     private static ObjectBroker instance = null;
     private static final int applicationPort = 9999;
@@ -20,11 +21,14 @@ public class ObjectBroker {
         if (debug) {
             logger.info(String.format("ObjectBroker instantiated with \t servicehost: %s, listenPort: %d, debug: %s",
                     serviceHost, listenPort, debug));
+            RemoteDelegator.debug = true;
         }
         this.serviceHost = serviceHost;
         this.listenPort = listenPort;
         this.debug = debug;
         this.nameservice = NameServiceProxy.getInstance(serviceHost, listenPort, applicationPort, debug);
+        this.applicationCommunicater = ApplicationCommunicater.getInstance(applicationPort,this.nameservice,debug);
+        new Thread(applicationCommunicater).start();
     }
 
 
