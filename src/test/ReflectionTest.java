@@ -9,32 +9,28 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class ReflectionTest {
 
     @Test
     public void testParameterReflection() throws ClassNotFoundException {
 
-        String request = ApplicationProtocol.requestMethodExecution("wurst","Wurst","schneiden",2.0,3.0,"hallo");
-        System.out.println(request);
-        String[] values = ApplicationProtocol.getParams(request);
-        for(Object s : values){
-            System.out.println("Value: "+s);
-            System.out.println(String.valueOf(s));
-        }
-        List<String> resultList = new ArrayList<>(Arrays.asList(values));
-        String[] transformedList = resultList.toArray(new String[values.length]);
-        System.out.println(resultList);
-        System.out.println(Arrays.toString(transformedList));
-        for(String o : transformedList){
-            System.out.println("o: " + ReflectionUtil.getParameterType(o));
-            System.out.println(ReflectionUtil.getParameterType(o));
-        }
-        Class[] result = ReflectionUtil.getParameterTypes(transformedList);
-        for(Class c : result){
-            System.out.println("Class: "+c);
-                }
 
+       String request = ApplicationProtocol.requestMethodExecution("wurst", "Wurst", "schneiden", 2.0, 3, "hallo");
+                Class[] types = new Class[]{double.class, int.class, String.class};
+        Class[] reflectedTypes = ReflectionUtil.getParameterTypes(ApplicationProtocol.getParams(request));
+        for (int i = 0; i < types.length; i++) {
+            assertEquals(types[i], reflectedTypes[i]);
+        }
+        Object[] reflectedValues = ReflectionUtil.getParameterValues(ApplicationProtocol.getParams(request));
+        Object[] values = new Object[]{2.0,3,"hallo"};
+        for (int i = 0; i < values.length; i++) {
+            assertEquals(values[i], reflectedValues[i]);
+        }
 
     }
 }

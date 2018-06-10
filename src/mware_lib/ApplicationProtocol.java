@@ -10,33 +10,37 @@ public class ApplicationProtocol {
         return String.format("%s,%s,%s,%s", objectName, className, methodName, Arrays.toString(params));
     }
 
-    public static String getObjectName(String message){
+    public static String getObjectName(String message) {
         return message.split(",")[0];
     }
 
-    public static String getClassName(String message){
+    public static String getClassName(String message) {
         return message.split(",")[1];
     }
 
-    public static String getEssentialClassName(String message){
-        return message.split(",")[1].substring(1).replaceAll("ImplBase","");
+    public static String getEssentialClassName(String message) {
+        return message.split(",")[1].substring(1).replaceAll("ImplBase", "");
     }
 
-    public static String getMethodName(String message){
+    public static String getMethodName(String message) {
         return message.split(",")[2];
     }
 
-//     dirty hack to deal with varargs, should def be revamped!
-    public static String[] getParams(String message){
-        int indexOfParamStart = message.indexOf("[");
+    //     dirty hack to deal with varargs, should def be revamped!
+    public static String[] getParams(String message) {
+
+        Pattern p = Pattern.compile("\\[(.*?)]");
+        Matcher m = p.matcher(message);
+        while (m.find()) {
+            return (m.group(1)).split(",");
+        }
+        //in case it does not work as expected
+                int indexOfParamStart = message.indexOf("[");
         int indexOfParamEnd = message.indexOf("]")+1;
         String[] splitMessage = message.substring(indexOfParamStart, indexOfParamEnd).replaceAll("\\[", "")
                 .replaceAll("]", "").replaceAll(" ","").split(",");
-
-//Pattern p = Pattern.compile("\\[(.*?)\\]");
-//Matcher m = p.matcher(message);
-//return m.group(1);
         return splitMessage;
-    }
-}
 
+    }
+
+}
