@@ -1,9 +1,6 @@
 package mware_lib;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -40,11 +37,10 @@ public class NameServiceProxy extends NameService {
         try (Socket mySock = new Socket(serviceHost, listenPort);
              // I/O-Kanäle der Socket
              BufferedReader in = new BufferedReader(new InputStreamReader(mySock.getInputStream()));
-             OutputStream out = mySock.getOutputStream()
+             PrintWriter out = new PrintWriter(mySock.getOutputStream())
         ) {
             // Kommunikation
-            out.write((NameServiceProtocol.createRequest(NameServiceProtocol.RESOLVE, serviceHost, listenPort))
-                    .getBytes());
+            out.write((NameServiceProtocol.createRequest(NameServiceProtocol.RESOLVE, serviceHost, listenPort)));
 
             return in.readLine();
         } catch (IOException e) {

@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class NameService {
 
-    private ConcurrentHashMap<String, Object> registry;
+    protected ConcurrentHashMap<String, String[]> registry;
     private static NameService instance = null;
     private static boolean running = true;
 
@@ -36,15 +36,12 @@ public class NameService {
     public static void main(String[] args) {
         int portNumber = Integer.parseInt(args[0]);
         try (
-                ServerSocket serverSocket = new ServerSocket(portNumber);
+                ServerSocket serverSocket = new ServerSocket(portNumber)
         ) {
             while (running) {
                 Socket clientSocket = serverSocket.accept();
-                PrintWriter out =
-                        new PrintWriter(clientSocket.getOutputStream(), true);
-                BufferedReader in = new BufferedReader(
-                        new InputStreamReader(clientSocket.getInputStream()));
-                new Thread(new RequestHandler(in,out)).start();
+                //delegate to a Thread so the NameService can keep listening to client requests
+                new Thread(new RequestHandler(clientSocket)).start();
 
 
 
