@@ -6,44 +6,47 @@ import java.util.List;
 
 public class ReflectionUtil {
 
-    public static Class[] getParameterType(String ...params) throws ClassNotFoundException {
-            Class[] paramTypes = new Class[params.length];
-            for(int i=0; i<params.length;i++){
-                Class paramClass = Class.forName(params[i]);
-                if (paramClass == Double.class) {
-                    paramTypes[i] = (double.class);
-                } else if (paramClass == Integer.class) {
-                    paramTypes[i] = (int.class);
-                } else {
-                    paramTypes[i] = paramClass;
-                }
+    public static Class[] getParameterTypes(Object[] params) throws ClassNotFoundException {
+        Class[] paramTypes = new Class[params.length];
+        for (int i = 0; i < params.length; i++) {
+            Class paramClass = params[i].getClass();
+            if (paramClass == Double.class) {
+                paramTypes[i] = (double.class);
+            } else if (paramClass == Integer.class) {
+                paramTypes[i] = (int.class);
+            } else {
+                paramTypes[i] = paramClass;
             }
-            return paramTypes;
+        }
+        return paramTypes;
     }
 
-    public static Object call(Object object, String method, Object... args) {
-        Class<?>[] argTypes = new Class<?>[args.length];
-        for (int i = 0; i < argTypes.length; i++) {
-            argTypes[i] = toClass(args[i]);
-        }
+    //Bad hack, only works b/c we know which types have to be supported and that number is very limited + all basic
+    // types
+    public static Class getParameterType(String param) {
+        Object type;
         try {
-            return object.getClass().getDeclaredMethod(method, argTypes).invoke(object, args);
-        } catch (InvocationTargetException e) {
-            return e.getCause();
-        } catch (Exception e) {
-            return e;
+            type = Double.parseDouble(param);
+        } catch (NumberFormatException e1) {
+            try {
+                type = Integer.parseInt(param);
+            } catch (NumberFormatException e2) {
+                type = param;
+            }
         }
-    }
+        Class paramType;
 
-    public static Class<?> toClass(Object o) {
-        if (o.getClass() == Integer.class) {
-            return int.class;
-        } else if (o.getClass() == Double.class) {
-            return double.class;
+        Class paramClass = type.getClass();
+        if (paramClass == Double.class) {
+            paramType = (double.class);
+        } else if (paramClass == Integer.class) {
+            paramType = (int.class);
+        } else {
+            paramType = paramClass;
         }
-        return o.getClass();
-    }
 
+        return paramType;
+    }
 
 
 }

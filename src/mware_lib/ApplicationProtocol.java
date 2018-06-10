@@ -1,6 +1,8 @@
 package mware_lib;
 
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ApplicationProtocol {
     public static String requestMethodExecution(String objectName, String className, String methodName, Object...
@@ -24,11 +26,17 @@ public class ApplicationProtocol {
         return message.split(",")[2];
     }
 
-    // dirty hack to deal with varargs, should def be revamped!
-    public static String getParams(String message){
+//     dirty hack to deal with varargs, should def be revamped!
+    public static String[] getParams(String message){
         int indexOfParamStart = message.indexOf("[");
         int indexOfParamEnd = message.indexOf("]")+1;
-        System.out.println(message.substring(indexOfParamStart,indexOfParamEnd));
-        return message.substring(indexOfParamStart,indexOfParamEnd);
+        String[] splitMessage = message.substring(indexOfParamStart, indexOfParamEnd).replaceAll("\\[", "")
+                .replaceAll("]", "").replaceAll(" ","").split(",");
+
+//Pattern p = Pattern.compile("\\[(.*?)\\]");
+//Matcher m = p.matcher(message);
+//return m.group(1);
+        return splitMessage;
     }
 }
+
