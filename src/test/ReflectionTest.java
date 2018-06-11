@@ -52,8 +52,7 @@ public class ReflectionTest {
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
         System.out.println(calculator);
-        calculator.add(2,2);
-        System.out.println(calculator.add(2,3));
+        assertEquals(5.0,calculator.add(2,3));
 
     }
 }

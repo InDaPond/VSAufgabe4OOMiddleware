@@ -38,9 +38,11 @@ public class RequestHandler implements Runnable {
             String request = in.readLine();
             if (debug) logger.info("Request received: " + request);
             Object reply = invokeMethod(ApplicationProtocol.getObjectName(request), ApplicationProtocol.getClassName
-                    (request), ApplicationProtocol.getMethodName(request),ApplicationProtocol.getParams(request));
+                    (request), ApplicationProtocol.getMethodName(request), ApplicationProtocol.getParams(request));
             if (debug && reply != null) logger.info("Reply: " + reply);
-            out.println(debug);
+            assert reply != null;
+            System.out.println(reply.getClass());
+            out.println(reply);
             clientSocket.close();
             if (debug) logger.info("Job done!");
         } catch (IOException e) {
@@ -71,33 +73,28 @@ public class RequestHandler implements Runnable {
 //            String[] parmeters = ApplicationProtocol.getParams(params);
 //            String[] parameters = params;
             Class[] parameterTypes = ReflectionUtil.getParameterTypes(params);
-            if(debug)logger.info("Parameter Types: "+ Arrays.toString(parameterTypes));
+            if (debug) logger.info("Parameter Types: " + Arrays.toString(parameterTypes));
             Object[] parameterValues = ReflectionUtil.getParameterValues(params);
-            if(debug)logger.info("Parameter Values: "+ Arrays.toString(parameterValues));
+            if (debug) logger.info("Parameter Values: " + Arrays.toString(parameterValues));
             Class<?> targetClass = target.getClass();
-            if(debug)logger.info("target Class: "+ targetClass);
+            if (debug) logger.info("target Class: " + targetClass);
             Method method = targetClass.getMethod(methodName, parameterTypes);
-            if(debug)logger.info("targeted Method: "+ method);
+            if (debug) logger.info("targeted Method: " + method);
             method.setAccessible(true);
             Object methodResult = method.invoke(target, parameterValues);
-            if(debug)logger.info("received result: "+ methodResult);
+            if (debug) logger.info("received result: " + methodResult);
             return methodResult;
 
 
             // production code should handle these exceptions more gracefully
 
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException x) {
-            Throwable cause = x.getCause();
-            System.err.format("invocation of %s failed: %s%n",
-                    methodName, cause.getMessage());
+
+        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
+            return e;
         }
         //Hopefulle won't reach this
-        return null;
+//        return null;
+
+
     }
-
-
 }

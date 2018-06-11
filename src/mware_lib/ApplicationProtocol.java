@@ -5,6 +5,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ApplicationProtocol {
+
+    public static final String SUCCESS = "ok";
+    public static final String FAILURE = "nok";
     public static String requestMethodExecution(String objectName, String className, String methodName, Object...
             params) {
         return String.format("%s,%s,%s,%s", objectName, className, methodName, Arrays.toString(params));

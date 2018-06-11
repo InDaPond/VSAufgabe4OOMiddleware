@@ -40,14 +40,12 @@ public class RemoteDelegator {
                         locationPort));
             out.println(methodRequest);
             String reply = in.readLine();
-            if (NameServiceProtocol.getType(reply).equals(NameServiceProtocol.SUCCESS)) {
-                return String.format("%s,%s,%s", NameServiceProtocol.getObjectName(reply), NameServiceProtocol
-                        .getHost(reply), NameServiceProtocol.getPort(reply));
-            }
+            if (debug) logger.info("Received reply: " + reply);
+            return ReflectionUtil.getParameterValue(reply);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return 4.0;
+        return null;
     }
 
 

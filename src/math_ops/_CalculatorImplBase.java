@@ -11,6 +11,7 @@ public int port = Integer.parseInt(rawObjectRef.toString().split(",")[2]);
 @Override
 public double add (double a, double b){
     System.out.printf("Name: %s, host:%s, port:%s\n",name,host,port);
+
 return (double) RemoteDelegator.invokeMethod(name, host, port,"_CalculatorImplBase","add", a, b);}
 @Override
 public String getStr (double a){
