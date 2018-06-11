@@ -65,9 +65,10 @@ public class BehaviourTest {
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
+        System.out.println("Calc: "+calculator);
         objBroker = ObjectBroker.init(host, port, true);
         nameService = objBroker.getNameService();
-        nameService.rebind("", "myCalculator");
+        nameService.rebind(4, "myCalculator");
         Object result;
         try {
             result = calculator.add(2, 3);
@@ -75,7 +76,13 @@ public class BehaviourTest {
             result = re;
         }
         assert (result instanceof RuntimeException);
-
+        Object doesNotExist;
+        try {
+            doesNotExist = client.resolveCalculator("foo");
+        }catch (NullPointerException n){
+            doesNotExist = n;
+        }
+        assertEquals(NullPointerException.class,doesNotExist.getClass());
     }
 
     @Test

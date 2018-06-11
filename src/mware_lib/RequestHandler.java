@@ -65,6 +65,7 @@ public class RequestHandler implements Runnable {
         if (debug) logger.info(String.format("invoking for: %s,%s,%s,%s", objectName, className, methodName, Arrays
                 .toString(params)));
         Object target = this.nameService.resolveLocally(objectName);
+        System.out.println("AHAHAHA: " + target +"    " + target.getClass());
 
         try {
 
