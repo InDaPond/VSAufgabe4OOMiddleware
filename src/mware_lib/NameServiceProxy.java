@@ -7,6 +7,9 @@ import java.net.Socket;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
+/**
+ * Workhorse for resolving/rebinding. Has his own registry for objects the application owns.
+ */
 public class NameServiceProxy extends NameService {
 
     private String serviceHost;

@@ -205,6 +205,12 @@ public class Parser {
         }
     }
 
+    /**
+     *
+     * @param lineNo
+     * @param paramList
+     * @return Array with the names of all the parameters. So your compiled class looks nice :)
+     */
     private static String[] parseParamNames(int lineNo, String paramList) {
         System.out.println("===parseParamNames START===");
         if (paramList != null && paramList.length() > 0) {
@@ -263,36 +269,12 @@ public class Parser {
         }
     }
 
+
     /**
-     * testing output & example on how to access class and method data of an IDL module.
-     *
+     * Here is where all the magic happens. parses the .idl into a .java file with the Help of above methods
      * @param module
      * @param packageLocation
      */
-//    private static void printModule(IDLmodule module) {
-//        System.out.println();
-//        System.out.println("module: " + module.getModuleName());
-//
-//        // classes
-//        IDLclass[] classes = module.getClasses();
-//        for (int i = 0; i < classes.length; i++) {
-//            System.out.println(" class: " + classes[i].getClassName());
-//
-//            // methods
-//            MethodData[] methods = classes[i].getMethods();
-//            for (int k = 0; k < methods.length; k++) {
-//                System.out.print("  method: " + IDLCompiler.getSupportedIDLDataTypeName(methods[k].getReturnType())
-//                        + " " + methods[k].getName() + " ");
-//
-//                // parameters
-//                SupportedDataTypes[] paramTypes = methods[k].getParamTypes();
-//                for (int m = 0; m < paramTypes.length; m++) {
-//                    System.out.print(IDLCompiler.getSupportedIDLDataTypeName(paramTypes[m]) + " ");
-//                }
-//                System.out.println();
-//            }
-//        }
-//    }
     private static void writeToFile(IDLmodule module, Path packageLocation) {
         String adjustedPackageLocation = packageLocation.toString() + File.separator + module.getModuleName();
 
@@ -372,6 +354,7 @@ public class Parser {
                         }
 
                     }
+                    //Exceptions added if though it is unchecked and not really necessary
                     fileWriter.append(") throws RuntimeException{\n" +
                             "Object result = ");
                     fileWriter.append("RemoteDelegator.invokeMethod(name, host, port," + "\"" + className
@@ -385,6 +368,7 @@ public class Parser {
                         fileWriter.append(paramNames[n]);
 
                     }
+                    //This one IS necessary, it passes the exception which might occurred remotely
                     fileWriter.append(");\n"+
                     "if (result instanceof RuntimeException) throw (RuntimeException) result;\n"
                     );

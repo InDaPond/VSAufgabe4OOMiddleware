@@ -18,6 +18,13 @@ public class IDLCompiler {
 	public static final String JAVA_DOUBLE = "double";
 	public static final String JAVA_STRING = "String";
 
+
+	/**
+	 *
+	 * @param returnType
+	 * @return returns a typeCasting Object
+	 */
+
     public static String getSupportedJavaDataTypeNameForReturnValue(SupportedDataTypes returnType) {
 		switch (returnType) {
 			case INT:

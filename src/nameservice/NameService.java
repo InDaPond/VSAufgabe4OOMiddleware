@@ -48,10 +48,10 @@ public class NameService implements Runnable {
 
     @Override
     public void run() {
-        if(debug) {
+        if (debug) {
             try {
-                logger.info(String.format("Nameservice up and running at %s:%s",InetAddress.getLocalHost()
-                                .getHostAddress(),port));
+                logger.info(String.format("Nameservice up and running at %s:%s", InetAddress.getLocalHost()
+                        .getHostAddress(), port));
             } catch (UnknownHostException e) {
                 e.printStackTrace();
             }

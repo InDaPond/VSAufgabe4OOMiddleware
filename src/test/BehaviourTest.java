@@ -65,7 +65,6 @@ public class BehaviourTest {
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
-        System.out.println("Calc: "+calculator);
         objBroker = ObjectBroker.init(host, port, true);
         nameService = objBroker.getNameService();
         nameService.rebind(4, "myCalculator");
@@ -79,10 +78,10 @@ public class BehaviourTest {
         Object doesNotExist;
         try {
             doesNotExist = client.resolveCalculator("foo");
-        }catch (NullPointerException n){
+        } catch (NullPointerException n) {
             doesNotExist = n;
         }
-        assertEquals(NullPointerException.class,doesNotExist.getClass());
+        assertEquals(NullPointerException.class, doesNotExist.getClass());
     }
 
     @Test
@@ -94,7 +93,6 @@ public class BehaviourTest {
         assertEquals("0.0", account.balanceInquiry());
         assertEquals(500, account.deposit(500));
         assertEquals("500.0", account.balanceInquiry());
-        System.out.println(account.balanceInquiry());
         assertEquals(225.50, account.withdraw(274.50));
     }
 
@@ -106,17 +104,23 @@ public class BehaviourTest {
         _BankImplBase account = client.resolveBankAccount("myBankAccount");
         assertEquals("0.0", account.balanceInquiry());
         assertEquals(500, account.deposit(500));
-        RuntimeException expectedT = new RuntimeException("Doesn't matter, fails anyway");
+        RuntimeException expectedT = new RuntimeException("Sorry to tell you, but you are poor.");
         Object result;
         try {
             result = account.withdraw(1000);
-            System.out.println("worked " + result);
         } catch (RuntimeException re) {
             result = re;
-            System.out.println("Didn't work: " + result.getClass());
         }
         assertEquals(expectedT.getClass(), result.getClass());
-        System.out.println(result);
+        RuntimeException typeCasted = (RuntimeException) result;
+        assertEquals(expectedT.getMessage(), typeCasted.getMessage());
+        try {
+            result = account.withdraw(-500);
+        } catch (RuntimeException re) {
+            result = re;
+        }
+        expectedT = new RuntimeException("You can't withdraw a negative amount, smartass.");
+        assertEquals(expectedT.getMessage(), ((RuntimeException) result).getMessage());
     }
 
 

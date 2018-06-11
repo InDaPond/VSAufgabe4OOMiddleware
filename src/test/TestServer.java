@@ -51,7 +51,7 @@ public class TestServer {
             @Override
             public double withdraw(double amount) {
                 if (amount < 0) {
-                    throw new RuntimeException("You can't withdraw a negative amount, smartass");
+                    throw new RuntimeException("You can't withdraw a negative amount, smartass.");
                 }
                 if (amount > balance) {
                     throw new RuntimeException("Sorry to tell you, but you are poor.");

@@ -65,12 +65,9 @@ public class RequestHandler implements Runnable {
         if (debug) logger.info(String.format("invoking for: %s,%s,%s,%s", objectName, className, methodName, Arrays
                 .toString(params)));
         Object target = this.nameService.resolveLocally(objectName);
-        System.out.println("AHAHAHA: " + target +"    " + target.getClass());
 
         try {
 
-//            String[] parmeters = ApplicationProtocol.getParams(params);
-//            String[] parameters = params;
             if (params == null) {
                 if (debug) logger.info("Method without parameters detected!");
 
@@ -103,9 +100,6 @@ public class RequestHandler implements Runnable {
         } catch (InvocationTargetException e) {
             return ApplicationProtocol.createReply(null, e.getCause());
         }
-        //Hopefulle won't reach this
-//        return null;
-
 
     }
 }

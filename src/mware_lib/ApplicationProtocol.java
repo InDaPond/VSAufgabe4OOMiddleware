@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Simple Protocol for creating resolve Requests and Extracting the received Response
+ */
 public class ApplicationProtocol {
 
     public static final String SUCCESS = "ok";

@@ -7,7 +7,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.logging.Logger;
 
-
+/**
+ * Handles exactly one incoming requests and then shuts down.
+ */
 public class RequestHandler implements Runnable {
 
     private NameService nameService;

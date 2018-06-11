@@ -1,13 +1,20 @@
 package mware_lib;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Helps to retrieve the object and call the method on it.
+ * If you know a way without reflection please write me a mail
+ * to Philipp.Goemann@haw-hamburg.de  since I have no idea how to do so.
+ * B/c of the protocol there also some regex hacks. This module is not pretty, but works.
+ */
 public class ReflectionUtil {
+
+    public static final Logger logger = Logger.getLogger(ReflectionUtil.class.getName());
+    public static boolean debug;
 
     public static Class[] getParameterTypes(String[] params) {
         int length = params.length;
@@ -63,7 +70,7 @@ public class ReflectionUtil {
         }
     }
 
-    //[null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, int)]
+    //Example input: [null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, int)]
     public static Object getException(String param) {
 
 
@@ -75,22 +82,22 @@ public class ReflectionUtil {
         if (m.find()) {
             exceptionMessage = (m.group(1)).replace("]", "");
         }
-        System.out.println("exceptionMessage= " + exceptionMessage);
+
+        if (debug) logger.info("exceptionMessage= " + exceptionMessage);
         Pattern exceptionCls = Pattern.compile("(.*):");
         Matcher n = exceptionCls.matcher(subStr);
         String exceptionClass = null;
         if (n.find()) {
             exceptionClass = (n.group(1));
         }
-        System.out.println("exceptionClass= " + exceptionClass);
+        if (debug) logger.info("exceptionClass= " + exceptionClass);
 
 
         try {
             Class c = Class.forName(exceptionClass);
-            System.out.println(c.getName());
 
             Object p = c.getDeclaredConstructor(String.class).newInstance(exceptionMessage);
-            System.out.println("Returning : "+p);
+            if (debug) logger.info("returning: " + p);
             return p;
 
 
@@ -98,7 +105,6 @@ public class ReflectionUtil {
                 | InstantiationException e) {
             e.printStackTrace();
         }
-//        return Class.forName(exceptionType).getConstructor(String.class).newInstance(message);
         return param;
     }
 

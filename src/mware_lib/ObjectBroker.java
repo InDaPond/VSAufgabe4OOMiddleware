@@ -22,6 +22,7 @@ public class ObjectBroker {
             logger.info(String.format("ObjectBroker instantiated with \t servicehost: %s, listenPort: %d, debug: %s",
                     serviceHost, listenPort, debug));
             RemoteDelegator.debug = true;
+            ReflectionUtil.debug = true;
         }
         this.serviceHost = serviceHost;
         this.listenPort = listenPort;
@@ -63,7 +64,8 @@ public class ObjectBroker {
      * Beendet die Benutzung der Middleware in dieser Anwendung
      */
     public void shutDown() {
-        //ToDO
+        this.applicationCommunicater.shutDown();
+        ObjectBroker.instance = null;
     }
 
 }

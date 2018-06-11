@@ -5,6 +5,11 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.logging.Logger;
 
+/**
+ * Communication module listening for incoming resolve requests (after you
+ * received the address of this application from the global nameservice)
+ * and delegating them to a RequestHandler
+ */
 public class ApplicationCommunicater implements Runnable {
 
     private int applicationPort;
@@ -28,7 +33,7 @@ public class ApplicationCommunicater implements Runnable {
     }
 
     public void shutDown(){
-        this.debug = false;
+        this.running = false;
     }
 
     @Override
