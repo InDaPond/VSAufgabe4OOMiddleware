@@ -13,6 +13,11 @@ public class ApplicationProtocol {
         return String.format("%s,%s,%s,%s", objectName, className, methodName, Arrays.toString(params));
     }
 
+    public static String createReply(Object result, Throwable throwable){
+        Object[] tmp = new Object[]{result, throwable};
+        return String.format("%s",Arrays.toString(tmp));
+    }
+
     public static String getObjectName(String message) {
         return message.split(",")[0];
     }

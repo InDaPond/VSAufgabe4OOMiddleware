@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
@@ -52,6 +54,7 @@ public class NameServiceTest {
         System.out.println(4);
         assertEquals(5.0, myCalc.add(2, 3));
         System.out.println("result: "+result.getClass());
+        System.out.println(Arrays.toString(new Object[]{2, null}));
 
     }
 
