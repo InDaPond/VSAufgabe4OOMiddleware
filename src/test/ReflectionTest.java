@@ -24,23 +24,21 @@ public class ReflectionTest {
 
     @BeforeAll
     static void init() {
-        System.out.println("!!!");
         nameservice.NameService.main(new String[]{String.valueOf(port)});
-        System.out.println("---");
     }
 
     @Test
     public void testParameterReflection() throws ClassNotFoundException {
 
 
-       String request = ApplicationProtocol.requestMethodExecution("wurst", "Wurst", "schneiden", 2.0, 3, "hallo");
-                Class[] types = new Class[]{double.class, int.class, String.class};
+        String request = ApplicationProtocol.requestMethodExecution("wurst", "Wurst", "schneiden", 2.0, 3, "hallo");
+        Class[] types = new Class[]{double.class, int.class, String.class};
         Class[] reflectedTypes = ReflectionUtil.getParameterTypes(ApplicationProtocol.getParams(request));
         for (int i = 0; i < types.length; i++) {
             assertEquals(types[i], reflectedTypes[i]);
         }
         Object[] reflectedValues = ReflectionUtil.getParameterValues(ApplicationProtocol.getParams(request));
-        Object[] values = new Object[]{2.0,3,"hallo"};
+        Object[] values = new Object[]{2.0, 3, "hallo"};
         for (int i = 0; i < values.length; i++) {
             assertEquals(values[i], reflectedValues[i]);
         }
@@ -48,21 +46,37 @@ public class ReflectionTest {
     }
 
     @Test
-    public void testReflection(){
+    public void testReflection() {
         TestClient client = new TestClient(host, port);
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
-        System.out.println(calculator);
-        assertEquals(5.0,calculator.add(2,3));
+        assertEquals(5.0, calculator.add(2, 3));
 
     }
 
     @Test
-    public void testReflectionError(){
+    public void testReflectionErrorWrongParameter() {
         TestClient client = new TestClient(host, port);
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
-        RemoteDelegator.invokeMethod("myCalculator",host,9999,"Should not matter","add",2,2);
+        Object result = RemoteDelegator.invokeMethod("myCalculator", host, 9999, "Should not matter", "add", 2, "bla");
+        NoSuchMethodException expectedT = new NoSuchMethodException("test.TestServer$1Calculator.add(int, java.lang" +
+                ".String)");
+        assertEquals(expectedT.getClass(), result.getClass());
+        NoSuchMethodException typeCast = (NoSuchMethodException) result;
+        assertEquals(expectedT.getMessage(), typeCast.getMessage());
+    }
+
+    @Test
+    public void testReflectionErrorWrongMethodName() {
+        TestClient client = new TestClient(host, port);
+        TestServer server = new TestServer(host, port);
+        server.rebindCalculator("myCalculator");
+        Object result = RemoteDelegator.invokeMethod("myCalculator", host, 9999, "Should not matter", "foobar", 2, 3);
+        NoSuchMethodException expectedT = new NoSuchMethodException("test.TestServer$1Calculator.foobar(int, int)");
+        assertEquals(expectedT.getClass(), result.getClass());
+        NoSuchMethodException typeCast = (NoSuchMethodException) result;
+        assertEquals(expectedT.getMessage(), typeCast.getMessage());
     }
 }

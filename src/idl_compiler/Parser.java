@@ -364,7 +364,6 @@ public class Parser {
                             + " " + currentMethod.getName() + " (");
                     SupportedDataTypes[] paramTypes = currentMethod.getParamTypes();
                     String[] paramNames = currentMethod.getParamNames();
-//                    System.out.println("paramNames in fileW: " + Arrays.toString(paramNames));
                     for (int m = 0; m < paramTypes.length; m++) {
                         fileWriter.append(IDLCompiler.getSupportedJavaDataTypeName(paramTypes[m]) + " " +
                                 paramNames[m]);
@@ -372,15 +371,16 @@ public class Parser {
                             fileWriter.append(", ");
                         }
                     }
-                    fileWriter.append("){\nreturn (" + IDLCompiler.getSupportedJavaDataTypeName(currentMethod
+                    fileWriter.append(") throws RuntimeException {\nreturn (" + IDLCompiler.getSupportedJavaDataTypeName(currentMethod
                             .getReturnType()) + ") RemoteDelegator.invokeMethod(name, host, port,"+"\"" + className + "\",\"" +
                             currentMethod.getName() +
-                            "\", ");
+                            "\"");
                     for (int n = 0; n < paramNames.length; n++) {
-                        fileWriter.append(paramNames[n]);
-                        if (paramNames.length > 1 && n < paramTypes.length - 1) {
+                        if (n < paramTypes.length) {
                             fileWriter.append(", ");
                         }
+                        fileWriter.append(paramNames[n]);
+
                     }
                     fileWriter.append(");}\n");
                 }

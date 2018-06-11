@@ -19,6 +19,7 @@ public class RemoteDelegator {
     private static final Logger logger = Logger.getLogger(RemoteDelegator.class.getName());
 
 
+
     public static Object invokeMethod(String objectName, String locationHost, int locationPort, String className,
                                       String methodName, Object... params) {
         if (debug)
@@ -49,13 +50,7 @@ public class RemoteDelegator {
             if(response[1]==null) {
                 return response[0];
             }else {
-                System.out.println("You're fucked!");
-                System.out.println(response[1] + "\n"+ Arrays.toString(response)+"\n");
-                for(Object o: response){
-                    System.out.println("O: "+o);
-                }
-                System.out.println(Arrays.toString(response).replaceFirst("\\[null, ","["));
-                return ReflectionUtil.getExceptionType(reply);
+                return ReflectionUtil.getException(reply);
             }
 
         } catch (IOException e) {

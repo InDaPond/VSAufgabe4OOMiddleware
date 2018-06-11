@@ -1,5 +1,6 @@
 package test;
 
+import bank._BankImplBase;
 import math_ops._CalculatorImplBase;
 import mware_lib.NameServiceProxy;
 import mware_lib.ObjectBroker;
@@ -13,7 +14,7 @@ import java.util.Arrays;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
-public class NameServiceTest {
+public class BehaviourTest {
 
     static String host = "localhost";
     static int port = 8500;
@@ -22,9 +23,7 @@ public class NameServiceTest {
 
     @BeforeAll
     static void init() {
-        System.out.println("!!!");
         nameservice.NameService.main(new String[]{String.valueOf(port)});
-        System.out.println("---");
     }
 
     @Test
@@ -41,20 +40,12 @@ public class NameServiceTest {
                 return Double.toString(a);
             }
         }
-        System.out.println(-1);
         ObjectBroker objBroker = ObjectBroker.init(host, port, true);
-        System.out.println(0);
         NameServiceProxy nameService = (NameServiceProxy) objBroker.getNameService();
-        System.out.println(1);
         nameService.rebind((Object) new Calculator(), "myCalculator");
-        System.out.println(2);
         Object result = nameService.resolveLocally("myCalculator");
-        System.out.println(3);
         Calculator myCalc = (Calculator) result;
-        System.out.println(4);
         assertEquals(5.0, myCalc.add(2, 3));
-        System.out.println("result: "+result.getClass());
-        System.out.println(Arrays.toString(new Object[]{2, null}));
 
     }
 
@@ -64,6 +55,39 @@ public class NameServiceTest {
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
+        assertEquals(6, calculator.add(2.3, 3.7));
+    }
+
+
+    @Test
+    public void testNonExistentObject() {
+        TestClient client = new TestClient(host, port);
+        TestServer server = new TestServer(host, port);
+        server.rebindCalculator("myCalculator");
+        _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
+        objBroker = ObjectBroker.init(host, port, true);
+        nameService = objBroker.getNameService();
+        nameService.rebind("", "myCalculator");
+        Object result;
+        try {
+            result = calculator.add(2, 3);
+        } catch (RuntimeException re) {
+            result = re;
+        }
+        assert (result instanceof RuntimeException);
 
     }
+
+    @Test
+    public void testValidCashTransactions() {
+        TestClient client = new TestClient(host, port);
+        TestServer server = new TestServer(host, port);
+        server.rebindBankAccount("myBankAccount");
+        _BankImplBase account = client.resolveBankAccount("myBankAccount");
+        assertEquals("0",account.balanceInquiry());
+//        assertEquals(500, account.deposit(500));
+//        assertEquals("500",account.balanceInquiry());
+    }
+
+
 }

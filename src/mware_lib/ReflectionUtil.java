@@ -62,47 +62,40 @@ public class ReflectionUtil {
             }
         }
     }
-//[null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, int)]
-    public static Object getExceptionType(String param) {
+
+    //[null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, int)]
+    public static Object getException(String param) {
 
 
-        String subStr = param.replaceFirst("\\[null, ","");
+        String subStr = param.replaceFirst("\\[null, ", "");
 
-        System.out.println("MUH: "+subStr);
+        System.out.println("MUH: " + subStr);
         Pattern exceptionMsg = Pattern.compile(" (.*)");
         Matcher m = exceptionMsg.matcher(subStr);
         String exceptionMessage = null;
         if (m.find()) {
-            exceptionMessage = (m.group(1)).replace("]","");
+            exceptionMessage = (m.group(1)).replace("]", "");
         }
-        System.out.println("exceptionMessage= "+exceptionMessage);
+        System.out.println("exceptionMessage= " + exceptionMessage);
         Pattern exceptionCls = Pattern.compile("(.*):");
         Matcher n = exceptionCls.matcher(subStr);
         String exceptionClass = null;
         if (n.find()) {
             exceptionClass = (n.group(1));
         }
-        System.out.println("exceptionClass= "+ exceptionClass);
+        System.out.println("exceptionClass= " + exceptionClass);
 
 
         try {
             Class c = Class.forName(exceptionClass);
             System.out.println(c.getName());
-            Object x = c.getConstructor(String.class).newInstance(exceptionMessage);
-            System.out.println(" HNGGHH " + x);
-            Object p = c.getDeclaredConstructor(String.class).newInstance(exceptionMessage);
-            System.out.println("RFI EW " + p );
 
-            ;
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchMethodException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (InvocationTargetException e) {
+            Object p = c.getDeclaredConstructor(String.class).newInstance(exceptionMessage);
+            return p;
+
+
+        } catch (ClassNotFoundException | NoSuchMethodException | IllegalAccessException | InvocationTargetException
+                | InstantiationException e) {
             e.printStackTrace();
         }
 //        return Class.forName(exceptionType).getConstructor(String.class).newInstance(message);

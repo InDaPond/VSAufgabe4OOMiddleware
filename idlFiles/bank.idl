@@ -1,0 +1,7 @@
+module bank {
+  class Bank {
+      double deposit(double amount);
+      double withdraw(double amount);
+      string balanceInquiry();
+  };
+};

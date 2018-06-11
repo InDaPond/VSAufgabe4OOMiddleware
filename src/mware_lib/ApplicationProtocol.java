@@ -8,14 +8,19 @@ public class ApplicationProtocol {
 
     public static final String SUCCESS = "ok";
     public static final String FAILURE = "nok";
+
     public static String requestMethodExecution(String objectName, String className, String methodName, Object...
             params) {
+
+        if (params.length == 0) {
+            return String.format("%s,%s,%s", objectName, className, methodName);
+        }
         return String.format("%s,%s,%s,%s", objectName, className, methodName, Arrays.toString(params));
     }
 
-    public static String createReply(Object result, Throwable throwable){
+    public static String createReply(Object result, Throwable throwable) {
         Object[] tmp = new Object[]{result, throwable};
-        return String.format("%s",Arrays.toString(tmp));
+        return String.format("%s", Arrays.toString(tmp));
     }
 
     public static String getObjectName(String message) {
@@ -39,15 +44,12 @@ public class ApplicationProtocol {
 
         Pattern p = Pattern.compile("\\[(.*)]");
         Matcher m = p.matcher(message);
-        while (m.find()) {
+        if (m.find()) {
             return (m.group(1)).split(",");
+        }else{
+            return null;
         }
-        //in case it does not work as expected
-                int indexOfParamStart = message.indexOf("[");
-        int indexOfParamEnd = message.indexOf("]")+1;
-        String[] splitMessage = message.substring(indexOfParamStart, indexOfParamEnd).replaceAll("\\[", "")
-                .replaceAll("]", "").replaceAll(" ","").split(",");
-        return splitMessage;
+
 
     }
 
