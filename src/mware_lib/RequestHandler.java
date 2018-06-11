@@ -39,7 +39,7 @@ public class RequestHandler implements Runnable {
             if (debug) logger.info("Request received: " + request);
             Object reply = invokeMethod(ApplicationProtocol.getObjectName(request), ApplicationProtocol.getClassName
                     (request), ApplicationProtocol.getMethodName(request), ApplicationProtocol.getParams(request));
-            if (debug && reply != null) logger.info("Reply: " + reply);
+            if (debug) logger.info("Reply: " + reply);
             assert reply != null;
             System.out.println(reply.getClass());
             out.println(reply);
@@ -63,7 +63,7 @@ public class RequestHandler implements Runnable {
      * @param params
      * @return
      */
-    private Object invokeMethod(String objectName, String className, String methodName, String[] params) {
+    public Object invokeMethod(String objectName, String className, String methodName, String[] params) {
         if (debug) logger.info(String.format("invoking for: %s,%s,%s,%s", objectName, className, methodName, Arrays
                 .toString(params)));
         Object target = this.nameService.resolveLocally(objectName);
@@ -83,14 +83,14 @@ public class RequestHandler implements Runnable {
             method.setAccessible(true);
             Object methodResult = method.invoke(target, parameterValues);
             if (debug) logger.info("received result: " + methodResult);
-            return methodResult;
-
-
+            return ApplicationProtocol.createReply(methodResult,null);
             // production code should handle these exceptions more gracefully
 
 
-        } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
-            return e;
+        } catch (NoSuchMethodException  | IllegalAccessException e) {
+            return ApplicationProtocol.createReply(null,e);
+        } catch (InvocationTargetException e) {
+            return ApplicationProtocol.createReply(null,e.getCause());
         }
         //Hopefulle won't reach this
 //        return null;

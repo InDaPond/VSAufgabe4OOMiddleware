@@ -3,6 +3,8 @@ package test;
 import math_ops._CalculatorImplBase;
 import mware_lib.ApplicationProtocol;
 import mware_lib.ReflectionUtil;
+import mware_lib.RemoteDelegator;
+import mware_lib.RequestHandler;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
@@ -54,5 +56,13 @@ public class ReflectionTest {
         System.out.println(calculator);
         assertEquals(5.0,calculator.add(2,3));
 
+    }
+
+    @Test
+    public void testReflectionError(){
+        TestClient client = new TestClient(host, port);
+        TestServer server = new TestServer(host, port);
+        server.rebindCalculator("myCalculator");
+        RemoteDelegator.invokeMethod("myCalculator",host,9999,"Should not matter","add",2,2);
     }
 }

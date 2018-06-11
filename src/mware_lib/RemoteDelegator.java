@@ -8,6 +8,8 @@ import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Arrays;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RemoteDelegator {
 
@@ -41,7 +43,21 @@ public class RemoteDelegator {
             out.println(methodRequest);
             String reply = in.readLine();
             if (debug) logger.info("Received reply: " + reply);
-            return ReflectionUtil.getParameterValue(reply);
+            Object[] response = ReflectionUtil.getParameterValues(ApplicationProtocol.getParams(reply));
+
+//            return response[0];
+            if(response[1]==null) {
+                return response[0];
+            }else {
+                System.out.println("You're fucked!");
+                System.out.println(response[1] + "\n"+ Arrays.toString(response)+"\n");
+                for(Object o: response){
+                    System.out.println("O: "+o);
+                }
+                System.out.println(Arrays.toString(response).replaceFirst("\\[null, ","["));
+                return ReflectionUtil.getExceptionType(reply);
+            }
+
         } catch (IOException e) {
             e.printStackTrace();
         }
