@@ -21,9 +21,9 @@ public class IDLCompiler {
     public static String getSupportedJavaDataTypeNameForReturnValue(SupportedDataTypes returnType) {
 		switch (returnType) {
 			case INT:
-				return "("+JAVA_INT+")";
+				return "("+JAVA_INT+") ";
 			case DOUBLE:
-				return "("+JAVA_DOUBLE+")";
+				return "("+JAVA_DOUBLE+") ";
 			case STRING:
 				return "String.valueOf(";
 			default:

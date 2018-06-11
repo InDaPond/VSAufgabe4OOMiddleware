@@ -17,12 +17,9 @@ public abstract class _BankImplBase {
 
             @Override
             public double deposit(double amount) throws RuntimeException {
-                return (double) RemoteDelegator.invokeMethod(name, host, port, "_BankImplBase", "deposit", amount);
-            }
-
-            @Override
-            public double withdraw(double amount) throws RuntimeException {
-                return (double) RemoteDelegator.invokeMethod(name, host, port, "_BankImplBase", "withdraw", amount);
+                Object result = RemoteDelegator.invokeMethod(name, host, port, "_BankImplBase", "deposit", amount);
+                if (result instanceof RuntimeException) throw (RuntimeException) result;
+                return (double) result;
             }
 
             @Override
@@ -34,7 +31,9 @@ public abstract class _BankImplBase {
 
             @Override
             public String balanceInquiry() throws RuntimeException {
-                return String.valueOf(RemoteDelegator.invokeMethod(name, host, port, "_BankImplBase", "balanceInquiry"));
+                Object result = RemoteDelegator.invokeMethod(name, host, port, "_BankImplBase", "balanceInquiry");
+                if (result instanceof RuntimeException) throw (RuntimeException) result;
+                return String.valueOf(result);
             }
         };
     }
