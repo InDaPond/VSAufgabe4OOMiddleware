@@ -29,7 +29,7 @@ public class ApplicationProtocol {
     //     dirty hack to deal with varargs, should def be revamped!
     public static String[] getParams(String message) {
 
-        Pattern p = Pattern.compile("\\[(.*?)]");
+        Pattern p = Pattern.compile("\\[(.*)]");
         Matcher m = p.matcher(message);
         while (m.find()) {
             return (m.group(1)).split(",");

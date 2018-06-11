@@ -52,6 +52,7 @@ public class NameServiceTest {
         System.out.println(4);
         assertEquals(5.0, myCalc.add(2, 3));
         System.out.println("result: "+result.getClass());
+
     }
 
     @Test
@@ -60,9 +61,6 @@ public class NameServiceTest {
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
-        System.out.println(calculator);
-        calculator.add(2,2);
-
 
     }
 }
