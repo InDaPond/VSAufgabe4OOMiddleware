@@ -78,6 +78,7 @@ public class RequestHandler implements Runnable {
             if(debug)logger.info("target Class: "+ targetClass);
             Method method = targetClass.getMethod(methodName, parameterTypes);
             if(debug)logger.info("targeted Method: "+ method);
+            method.setAccessible(true);
             Object methodResult = method.invoke(target, parameterValues);
             if(debug)logger.info("received result: "+ methodResult);
             return methodResult;
