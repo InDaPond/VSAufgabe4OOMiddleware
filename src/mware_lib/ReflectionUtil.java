@@ -69,7 +69,6 @@ public class ReflectionUtil {
 
         String subStr = param.replaceFirst("\\[null, ", "");
 
-        System.out.println("MUH: " + subStr);
         Pattern exceptionMsg = Pattern.compile(" (.*)");
         Matcher m = exceptionMsg.matcher(subStr);
         String exceptionMessage = null;
@@ -91,6 +90,7 @@ public class ReflectionUtil {
             System.out.println(c.getName());
 
             Object p = c.getDeclaredConstructor(String.class).newInstance(exceptionMessage);
+            System.out.println("Returning : "+p);
             return p;
 
 

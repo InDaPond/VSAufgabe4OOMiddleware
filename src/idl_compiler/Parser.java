@@ -371,8 +371,11 @@ public class Parser {
                             fileWriter.append(", ");
                         }
                     }
-                    fileWriter.append(") throws RuntimeException {\nreturn (" + IDLCompiler.getSupportedJavaDataTypeName(currentMethod
-                            .getReturnType()) + ") RemoteDelegator.invokeMethod(name, host, port,"+"\"" + className + "\",\"" +
+                    fileWriter.append(") throws RuntimeException {\nreturn " + IDLCompiler
+                            .getSupportedJavaDataTypeNameForReturnValue(currentMethod
+                                    .getReturnType()));
+                    fileWriter.append("RemoteDelegator.invokeMethod(name, host, port," + "\"" + className
+                            + "\",\"" +
                             currentMethod.getName() +
                             "\"");
                     for (int n = 0; n < paramNames.length; n++) {
@@ -381,6 +384,9 @@ public class Parser {
                         }
                         fileWriter.append(paramNames[n]);
 
+                    }
+                    if (currentMethod.getReturnType() == SupportedDataTypes.STRING) {
+                        fileWriter.append(")");
                     }
                     fileWriter.append(");}\n");
                 }

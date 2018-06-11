@@ -10,10 +10,10 @@ public String host = rawObjectRef.toString().split(",")[1];
 public int port = Integer.parseInt(rawObjectRef.toString().split(",")[2]);
 @Override
 public String stringMethod1 (String s1, String s2, int i, double d) throws RuntimeException {
-return (String) RemoteDelegator.invokeMethod(name, host, port,"_ClassTwoImplBase","stringMethod1", s1, s2, i, d);}
+return String.valueOf(RemoteDelegator.invokeMethod(name, host, port,"_ClassTwoImplBase","stringMethod1", s1, s2, i, d));}
 @Override
 public String stringMethod2 (double d) throws RuntimeException {
-return (String) RemoteDelegator.invokeMethod(name, host, port,"_ClassTwoImplBase","stringMethod2", d);}
+return String.valueOf(RemoteDelegator.invokeMethod(name, host, port,"_ClassTwoImplBase","stringMethod2", d));}
 };
 }
 }

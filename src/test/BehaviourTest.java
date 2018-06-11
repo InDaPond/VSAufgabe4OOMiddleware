@@ -84,9 +84,33 @@ public class BehaviourTest {
         TestServer server = new TestServer(host, port);
         server.rebindBankAccount("myBankAccount");
         _BankImplBase account = client.resolveBankAccount("myBankAccount");
-        assertEquals("0",account.balanceInquiry());
-//        assertEquals(500, account.deposit(500));
-//        assertEquals("500",account.balanceInquiry());
+        assertEquals("0.0", account.balanceInquiry());
+        assertEquals(500, account.deposit(500));
+        assertEquals("500.0",account.balanceInquiry());
+        assertEquals(225.50,account.withdraw(274.50));
+    }
+
+    @Test
+    public void testInvalidCashTransactions() {
+        TestClient client = new TestClient(host, port);
+        TestServer server = new TestServer(host, port);
+        server.rebindBankAccount("myBankAccount");
+        _BankImplBase account = client.resolveBankAccount("myBankAccount");
+        assertEquals("0.0", account.balanceInquiry());
+        assertEquals(500, account.deposit(500));
+        RuntimeException expectedT = new RuntimeException("test.TestServer$1Calculator.add(int, java.lang" +
+                ".String)");
+        Object result;
+        try {
+            result = account.withdraw(1000);
+            System.out.println("Das ging: "+result);
+        }
+        catch (RuntimeException re){
+            result = re;
+            System.out.println("Das ging nicht: "+result.getClass());
+        }
+        assertEquals(expectedT.getClass(),result.getClass());
+        System.out.println(result);
     }
 
 

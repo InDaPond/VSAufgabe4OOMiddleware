@@ -48,8 +48,11 @@ public class RemoteDelegator {
 
 //            return response[0];
             if(response[1]==null) {
+                System.out.println("Alles gut");
                 return response[0];
             }else {
+                System.out.println("Error Error");
+                System.out.println("??"+ReflectionUtil.getException(reply));
                 return ReflectionUtil.getException(reply);
             }
 

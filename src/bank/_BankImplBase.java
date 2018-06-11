@@ -11,14 +11,13 @@ public String host = rawObjectRef.toString().split(",")[1];
 public int port = Integer.parseInt(rawObjectRef.toString().split(",")[2]);
 @Override
 public double deposit (double amount) throws RuntimeException {
-return (double) RemoteDelegator.invokeMethod(name, host, port,"_BankImplBase","deposit", amount);}
+return (double)RemoteDelegator.invokeMethod(name, host, port,"_BankImplBase","deposit", amount);}
 @Override
 public double withdraw (double amount) throws RuntimeException {
-return (double) RemoteDelegator.invokeMethod(name, host, port,"_BankImplBase","withdraw", amount);}
+return (double)RemoteDelegator.invokeMethod(name, host, port,"_BankImplBase","withdraw", amount);}
 @Override
 public String balanceInquiry () throws RuntimeException {
 return String.valueOf(RemoteDelegator.invokeMethod(name, host, port,"_BankImplBase","balanceInquiry"));}
 };
 }
 }
-

@@ -18,10 +18,21 @@ public class IDLCompiler {
 	public static final String JAVA_DOUBLE = "double";
 	public static final String JAVA_STRING = "String";
 
+    public static String getSupportedJavaDataTypeNameForReturnValue(SupportedDataTypes returnType) {
+		switch (returnType) {
+			case INT:
+				return "("+JAVA_INT+")";
+			case DOUBLE:
+				return "("+JAVA_DOUBLE+")";
+			case STRING:
+				return "String.valueOf(";
+			default:
+				return null;
+		}
+    }
 
 
-
-	// Supported data types
+    // Supported data types
 
 	/**
 	 * @author (c) H. Schulz, 2016    This programme is provided 'As-is', without any guarantee of any kind, implied or otherwise and is wholly unsupported.  You may use and modify it as long as you state the above copyright.
