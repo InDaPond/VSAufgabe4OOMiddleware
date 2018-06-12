@@ -39,7 +39,7 @@ public class ObjectBroker {
      * @param serviceHost of NameService
      * @param listenPort  of NameService
      * @param debug       switch on(true) or off (false)
-     * @return
+     * @return ObjectBroker
      */
     public static ObjectBroker init(String serviceHost,
                                     int listenPort, boolean debug) {

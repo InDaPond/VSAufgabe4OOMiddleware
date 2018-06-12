@@ -14,7 +14,9 @@ import java.util.logging.Logger;
 
 public class NameService implements Runnable {
 
-    protected ConcurrentHashMap<String, String[]> registry;
+    //registry is package private, so that the RequestHandler can access it, instead
+    //of having a reference to it at the RequestHandler's construction time.
+    ConcurrentHashMap<String, String[]> registry;
     private static NameService instance = null;
     private static boolean running = true;
     private static int port;

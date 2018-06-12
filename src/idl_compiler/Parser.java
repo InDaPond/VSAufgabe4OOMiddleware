@@ -206,7 +206,6 @@ public class Parser {
     }
 
     /**
-     *
      * @param lineNo
      * @param paramList
      * @return Array with the names of all the parameters. So your compiled class looks nice :)
@@ -240,7 +239,7 @@ public class Parser {
 
 
     /**
-     * @param args (Path of idlFile, Path where to store the .convert File, Path where to create packages which
+     * @param args (Path of idlFile, Path where to create packages which
      *             contain compiled .java Files)
      */
     public static void main(String[] args) {
@@ -251,20 +250,14 @@ public class Parser {
             System.out.printf("%s, %s,\n", IDLfileName.toString(), packageLocation.toString());
             IDLfileReader in = new IDLfileReader(new FileReader(IDLfileName.toString()));
             IDLmodule module = parseModule(in);  // Parse IDL file
-            System.out.println("Got here");
 
-            // output of what we parsed from IDL file (just for testing)
-//            printModule(module);
             writeToFile(module, packageLocation);
             System.out.println("===writeToFile DONE===");
-            //            Converter.createPackage(parsedFileLocation,packageLocation);
 
 
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         } catch (IOException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
@@ -272,8 +265,9 @@ public class Parser {
 
     /**
      * Here is where all the magic happens. parses the .idl into a .java file with the Help of above methods
-     * @param module
-     * @param packageLocation
+     *
+     * @param module parsed IDL-file
+     * @param packageLocation where to store the result
      */
     private static void writeToFile(IDLmodule module, Path packageLocation) {
         String adjustedPackageLocation = packageLocation.toString() + File.separator + module.getModuleName();
@@ -314,7 +308,6 @@ public class Parser {
                     // parameters
                     SupportedDataTypes[] paramTypes = currentMethod.getParamTypes();
                     String[] paramNames = currentMethod.getParamNames();
-//                    System.out.println("paramNames in fileW: " + Arrays.toString(paramNames));
                     for (int m = 0; m < paramTypes.length; m++) {
                         System.out.print(IDLCompiler.getSupportedJavaDataTypeName(paramTypes[m]) + " " + paramNames[m]);
                         fileWriter.append(IDLCompiler.getSupportedJavaDataTypeName(paramTypes[m]) + " " +
@@ -369,15 +362,12 @@ public class Parser {
 
                     }
                     //This one IS necessary, it passes the exception which might occurred remotely
-                    fileWriter.append(");\n"+
-                    "if (result instanceof RuntimeException) throw (RuntimeException) result;\n"
+                    fileWriter.append(");\n" +
+                            "if (result instanceof RuntimeException) throw (RuntimeException) result;\n"
                     );
-
-
                     fileWriter.append("return " + IDLCompiler
                             .getSupportedJavaDataTypeNameForReturnValue(currentMethod
-                                    .getReturnType())+"result");
-
+                                    .getReturnType()) + "result");
                     if (currentMethod.getReturnType() == SupportedDataTypes.STRING) {
                         fileWriter.append(")");
                     }

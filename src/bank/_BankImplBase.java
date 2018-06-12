@@ -11,9 +11,9 @@ public abstract class _BankImplBase {
 
     public static _BankImplBase narrowCast(Object rawObjectRef) {
         return new _BankImplBase() {
-            public String name = rawObjectRef.toString().split(",")[0];
-            public String host = rawObjectRef.toString().split(",")[1];
-            public int port = Integer.parseInt(rawObjectRef.toString().split(",")[2]);
+            private String name = rawObjectRef.toString().split(",")[0];
+            private String host = rawObjectRef.toString().split(",")[1];
+            private int port = Integer.parseInt(rawObjectRef.toString().split(",")[2]);
 
             @Override
             public double deposit(double amount) throws RuntimeException {
