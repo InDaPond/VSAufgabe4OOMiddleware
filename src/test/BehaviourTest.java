@@ -54,6 +54,11 @@ public class BehaviourTest {
         TestClient client = new TestClient(host, port);
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
         assertEquals(6, calculator.add(2.3, 3.7));
     }
@@ -68,6 +73,11 @@ public class BehaviourTest {
         objBroker = ObjectBroker.init(host, port, true);
         nameService = objBroker.getNameService();
         nameService.rebind(4, "myCalculator");
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Object result;
         try {
             result = calculator.add(2, 3);
@@ -89,6 +99,11 @@ public class BehaviourTest {
         TestClient client = new TestClient(host, port);
         TestServer server = new TestServer(host, port);
         server.rebindBankAccount("myBankAccount");
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         _BankImplBase account = client.resolveBankAccount("myBankAccount");
         assertEquals("0.0", account.balanceInquiry());
         assertEquals(500, account.deposit(500));
@@ -101,6 +116,11 @@ public class BehaviourTest {
         TestClient client = new TestClient(host, port);
         TestServer server = new TestServer(host, port);
         server.rebindBankAccount("myBankAccount");
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         _BankImplBase account = client.resolveBankAccount("myBankAccount");
         assertEquals("0.0", account.balanceInquiry());
         assertEquals(500, account.deposit(500));

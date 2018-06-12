@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Simple Protocol for creating resolve Requests and Extracting the received Response
+ * Simple Protocol for creating resolve Requests and Extracting the received Response6
  */
 public class ApplicationProtocol {
 
