@@ -1,0 +1,750 @@
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ObjectBroker <init>
+INFORMATION: ObjectBroker instantiated with 	 servicehost: localhost, listenPort: 8500, debug: true
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy getInstance
+INFORMATION: getInstance called
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy getInstance
+INFORMATION: new Instance created
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Nameservice up and running at 172.31.185.113:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1Calculator put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: resolve called for myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Connection established
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Request sent: resolve,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: resolve,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Retrieving Object...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Item retrieved, Generating response!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Sending reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Received reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object java.lang.Integer put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myCalculator,172.31.185.113,9999,_CalculatorImplBase,add,[2.0, 3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myCalculator,_CalculatorImplBase,add,[2.0, 3.0] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myCalculator,_CalculatorImplBase,add,[2.0, 3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myCalculator,_CalculatorImplBase,add,[2.0,  3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double, double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [2.0, 3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class java.lang.Integer
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [null, java.lang.NoSuchMethodException: java.lang.Integer.add(double, double)]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [null, java.lang.NoSuchMethodException: java.lang.Integer.add(double, double)]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionMessage= java.lang.Integer.add(double, double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionClass= java.lang.NoSuchMethodException
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: returning: java.lang.NoSuchMethodException: java.lang.Integer.add(double, double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: resolve called for foo
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Connection established
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Request sent: resolve,foo,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: resolve,foo,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Retrieving Object...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Failed to retrieve item :(
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Reply: nok
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Sending reply: nok
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Received reply: nok
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1BankAccount put into local registry with the name myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: resolve called for myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Connection established
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Request sent: resolve,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: resolve,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Retrieving Object...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Item retrieved, Generating response!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Reply: ok,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Sending reply: ok,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Received reply: ok,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,balanceInquiry,[]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,balanceInquiry to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,balanceInquiry
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,balanceInquiry,null
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Method without parameters detected!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public java.lang.String test.TestServer$1BankAccount.balanceInquiry()
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 0.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [0.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [0.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,deposit,[500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,deposit,[500.0] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,deposit,[500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,deposit,[500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public double test.TestServer$1BankAccount.deposit(double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 500.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [500.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [500.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,withdraw,[1000.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,withdraw,[1000.0] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,withdraw,[1000.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,withdraw,[1000.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [1000.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public double test.TestServer$1BankAccount.withdraw(double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [null, java.lang.RuntimeException: Sorry to tell you, but you are poor.]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [null, java.lang.RuntimeException: Sorry to tell you, but you are poor.]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionMessage= Sorry to tell you, but you are poor.
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionClass= java.lang.RuntimeException
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: returning: java.lang.RuntimeException: Sorry to tell you, but you are poor.
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,withdraw,[-500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,withdraw,[-500.0] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,withdraw,[-500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,withdraw,[-500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [-500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public double test.TestServer$1BankAccount.withdraw(double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [null, java.lang.RuntimeException: You can't withdraw a negative amount, smartass.]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [null, java.lang.RuntimeException: You can't withdraw a negative amount, smartass.]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionMessage= You can't withdraw a negative amount, smartass.
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionClass= java.lang.RuntimeException
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: returning: java.lang.RuntimeException: You can't withdraw a negative amount, smartass.
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.BehaviourTest$1Calculator put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myCalculator
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1Calculator put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: resolve called for myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Connection established
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Request sent: resolve,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: resolve,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Retrieving Object...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Item retrieved, Generating response!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Sending reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Received reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myCalculator,172.31.185.113,9999,_CalculatorImplBase,add,[2.3, 3.7]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myCalculator,_CalculatorImplBase,add,[2.3, 3.7] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myCalculator,_CalculatorImplBase,add,[2.3, 3.7]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myCalculator,_CalculatorImplBase,add,[2.3,  3.7]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double, double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [2.3, 3.7]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1Calculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+
+INFORMATION: targeted Method: public double test.TestServer$1Calculator.add(double,double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 6.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [6.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [6.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1BankAccount put into local registry with the name myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: resolve called for myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Connection established
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Request sent: resolve,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: resolve,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Retrieving Object...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Item retrieved, Generating response!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Reply: ok,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Sending reply: ok,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Received reply: ok,myBankAccount,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,balanceInquiry,[]
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,balanceInquiry to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,balanceInquiry
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,balanceInquiry,null
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Method without parameters detected!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public java.lang.String test.TestServer$1BankAccount.balanceInquiry()
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 0.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [0.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [0.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,deposit,[500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,deposit,[500.0] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,deposit,[500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,deposit,[500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [500.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public double test.TestServer$1BankAccount.deposit(double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 500.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [500.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [500.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,balanceInquiry,[]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,balanceInquiry to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,balanceInquiry
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,balanceInquiry,null
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Method without parameters detected!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public java.lang.String test.TestServer$1BankAccount.balanceInquiry()
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 500.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [500.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [500.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myBankAccount,172.31.185.113,9999,_BankImplBase,withdraw,[274.5]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myBankAccount,_BankImplBase,withdraw,[274.5] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myBankAccount,_BankImplBase,withdraw,[274.5]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myBankAccount,_BankImplBase,withdraw,[274.5]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myBankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [274.5]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1BankAccount
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public double test.TestServer$1BankAccount.withdraw(double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 225.5
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [225.5, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [225.5, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1Calculator put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: resolve called for myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Connection established
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Request sent: resolve,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Nameservice up and running at 172.31.185.113:8500
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: resolve,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+java.net.BindException: Address already in use: NET_Bind
+	at java.base/java.net.DualStackPlainSocketImpl.bind0(Native Method)
+	at java.base/java.net.DualStackPlainSocketImpl.socketBind(DualStackPlainSocketImpl.java:106)
+	at java.base/java.net.AbstractPlainSocketImpl.bind(AbstractPlainSocketImpl.java:437)
+	at java.base/java.net.PlainSocketImpl.bind(PlainSocketImpl.java:174)
+	at java.base/java.net.ServerSocket.bind(ServerSocket.java:381)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:243)
+	at java.base/java.net.ServerSocket.<init>(ServerSocket.java:135)
+	at nameservice.NameService.run(NameService.java:62)
+	at java.base/java.lang.Thread.run(Thread.java:844)
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Retrieving Object...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler resolve
+INFORMATION: Item retrieved, Generating response!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Sending reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolve
+INFORMATION: Received reply: ok,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myCalculator,172.31.185.113,9999,_CalculatorImplBase,add,[2.0, 3.0]
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myCalculator,_CalculatorImplBase,add,[2.0, 3.0] to 172.31.185.113:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myCalculator,_CalculatorImplBase,add,[2.0, 3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myCalculator,_CalculatorImplBase,add,[2.0,  3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [double, double]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [2.0, 3.0]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1Calculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: targeted Method: public double test.TestServer$1Calculator.add(double,double)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: received result: 5.0
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [5.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [5.0, null]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1Calculator put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myCalculator,localhost,9999,Should not matter,foobar,[2, 3]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myCalculator,Should not matter,foobar,[2, 3] to localhost:9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myCalculator,Should not matter,foobar,[2, 3]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myCalculator,Should not matter,foobar,[2,  3]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [int, int]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [2, 3]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1Calculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.foobar(int, int)]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.foobar(int, int)]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionMessage= test.TestServer$1Calculator.foobar(int, int)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionClass= java.lang.NoSuchMethodException
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: returning: java.lang.NoSuchMethodException: test.TestServer$1Calculator.foobar(int, int)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: rebind called
+Object test.TestServer$1Calculator put into local registry with the name myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Writing to localhost:8500
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Request sent: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy rebind
+INFORMATION: Message sent. Closing Socket
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: called with: myCalculator,localhost,9999,Should not matter,add,[2, bla]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Sending methodRequest: myCalculator,Should not matter,add,[2, bla] to localhost:9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.NameService run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ApplicationCommunicater run
+INFORMATION: Received new connection, delegating...
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Waiting for incoming requests!
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Request received: rebind,myCalculator,172.31.185.113,9999
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler rebind
+INFORMATION: rebind done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Request received: myCalculator,Should not matter,add,[2, bla]
+Juni 12, 2018 5:36:07 NACHM. nameservice.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: invoking for: myCalculator,Should not matter,add,[2,  bla]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.NameServiceProxy resolveLocally
+INFORMATION: resolve Locally: myCalculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Types: [int, class java.lang.String]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: Parameter Values: [2, bla]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler invokeMethod
+INFORMATION: target Class: class test.TestServer$1Calculator
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Reply: [null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, java.lang.String)]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RemoteDelegator invokeMethod
+INFORMATION: Received reply: [null, java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, java.lang.String)]
+Juni 12, 2018 5:36:07 NACHM. mware_lib.RequestHandler run
+INFORMATION: Job done!
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionMessage= test.TestServer$1Calculator.add(int, java.lang.String)
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: exceptionClass= java.lang.NoSuchMethodException
+Juni 12, 2018 5:36:07 NACHM. mware_lib.ReflectionUtil getException
+INFORMATION: returning: java.lang.NoSuchMethodException: test.TestServer$1Calculator.add(int, java.lang.String)
+
+Process finished with exit code 0

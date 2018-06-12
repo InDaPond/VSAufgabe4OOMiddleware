@@ -69,6 +69,11 @@ public class BehaviourTest {
         TestClient client = new TestClient(host, port);
         TestServer server = new TestServer(host, port);
         server.rebindCalculator("myCalculator");
+        try {
+            Thread.sleep(10);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         _CalculatorImplBase calculator = client.resolveCalculator("myCalculator");
         objBroker = ObjectBroker.init(host, port, true);
         nameService = objBroker.getNameService();

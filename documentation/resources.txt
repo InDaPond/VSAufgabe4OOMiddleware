@@ -1,3 +1,0 @@
-https://docs.oracle.com/javase/tutorial/essential/io/pathOps.html
-https://docs.oracle.com/javase/tutorial/networking/sockets/index.html
-https://docs.oracle.com/javase/tutorial/reflect/member/methodInvocation.html
